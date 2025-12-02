@@ -1,0 +1,38 @@
+{
+    "eventData": [
+        {
+            "id": 1,
+            "title": "Konser Last Child di Palembang",
+            "artist": "Last Child",
+            "venue": "Jakabaring Sport City, Palembang",
+            "date": "Dec 15, 2025",
+            "image": "https://cdn.grid.id/crop/0x0:0x0/700x465/smart/filters:format(webp):quality(100)/photo/2022/07/09/endah-n-rhesa-album-artworkjp-20220709113817.jpg",
+            "badge": "SOLD OUT",
+            "price": "Rp.75.000",
+            "category": " Genre: pop punk dan rock"
+        },
+        {
+            "id": 2,
+            "title": "Konser threesixty di Palembang",
+            "artist": "threesixty",
+            "venue": "Continue Coffee, Palembang",
+            "date": "Jan 20, 2026",
+            "image": "https://i.ytimg.com/vi/XYUTHDi54_c/maxresdefault.jpg",
+            "badge": "VIP",
+            "price": "Rp.110.000",
+            "category": "Genre: skate-punk dan Alternative rock"
+        },
+        {
+            "id": 3,
+            "title": "Konser Stand Here Alone di Palembang",
+            "artist": "Stand Here Alone",
+            "venue": "Kedai Siru, Palembang",
+            "date": "Feb 8, 2026",
+            "image": "https://i.scdn.co/image/ab67616d00001e02e3f73acdc43fd25a5e8270fa",
+            "badge": "TRENDING",
+            "price": "Rp.95.000",
+            "category": "Genre: pop punk"
+        }
+        
+    ]
+}

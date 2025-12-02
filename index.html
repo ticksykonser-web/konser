@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticksy - Premium Concert Tickets</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <a href="#" class="logo" onclick="showSection('home')">
+                <i class="fas fa-music"></i>
+                Ticksy
+            </a>
+            <input type="checkbox" id="menu-toggle" style="display: none;">
+            <label for="menu-toggle" id="menu-icon" class="fas fa-bars"></label>
+            <div class="nav-links">
+                <a href="#" class="active" onclick="showSection('home')">Beranda</a>
+                <a href="#" onclick="showSection('events')">Events</a>
+                <a href="#" onclick="showSection('support')">Layanan</a>
+            </div>
+            <div class="auth-buttons">
+                <button class="btn btn-outline" onclick="showSection('sign in')">
+                    <i class="fas fa-user"></i>
+                    Sign In
+                </button>
+                <button class="btn btn-primary" onclick="showSection('sign up')">
+                    <i class="fas fa-user-plus"></i>
+                    Sign Up
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Home Section -->
+    <section id="home" class="section active">
+        <div class="hero">
+            <div class="hero-content">
+                <div class="hero-badge">
+                    <i class="fas fa-crown"></i>
+                    
+                </div>
+                <h1>Tiket Murah dan Terpercaya</h1>
+                
+                <div class="hero-buttons">
+                    <button class="btn btn-primary" onclick="showSection('events')">
+                        <i class="fas fa-search"></i>
+                        Cari Events
+                    </button>
+                    <button class="btn btn-outline" onclick="showSection('support')">
+                        <i class="fas fa-headset"></i>
+                        Layanan
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Upcoming Events</h2>
+            <p class="section-subtitle">Temukan konser dan pertunjukan langsung terpanas yang terjadi di dekat Anda</p>
+            <div class="search-container">
+                <input type="text" id="eventSearch" placeholder="Cari event berdasarkan judul atau artis..." class="search-input">
+            </div>
+        </div>
+        <div class="events-grid" id="eventsGrid">
+            <!-- Events will be loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Artists Section -->
+    <section id="artists" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Featured Artists</h2>
+            <p class="section-subtitle">Meet the incredible performers lighting up stages worldwide</p>
+        </div>
+        <div class="artists-grid" id="artistsGrid">
+            <!-- Artists will be loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Venues Section -->
+    <section id="venues" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Premium Venues</h2>
+            <p class="section-subtitle">Experience world-class acoustics and atmosphere at our partner venues</p>
+        </div>
+        <div class="venues-grid" id="venuesGrid">
+            <!-- Venues will be loaded by JavaScript -->
+        </div>
+    </section>
+
+    <!-- Support Section -->
+    <section id="support" class="section">
+        <div class="section-header">
+            <h2 class="section-title">Apakah ada yang bisa kami bantu?</h2>
+            <p class="section-subtitle">Dapatkan bantuan terkait tiket, akun, atau masalah teknis Anda</p>
+        </div>
+        <div class="support-container">
+            <div class="support-grid">
+                <div class="support-item">
+                    <div class="support-icon">
+                        <i class="fas fa-ticket-alt"></i>
+                    </div>
+                    <h3 class="support-title">Masalah tiket</h3>
+                    
+                </div>
+                <div class="support-item">
+                    <div class="support-icon">
+                        <i class="fas fa-user-circle"></i>
+                    </div>
+                    <h3 class="support-title">Bantuan Akun</h3>
+                    
+                </div>
+                <div class="support-item">
+                    <div class="support-icon">
+                        <i class="fas fa-credit-card"></i>
+                    </div>
+                    <h3 class="support-title">Dukungan Pembayaran</h3>
+                    
+                </div>
+                <div class="support-item">
+                    <div class="support-icon">
+                        <i class="fas fa-headphones"></i>
+                    </div>
+                    <h3 class="support-title">Layanan Pelanggan</h3>
+                    
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SIGN IN Section -->
+<section id="sign in" class="section">
+    <div class="section-header">
+        <h2 class="section-title">Sign In</h2>
+        <p class="section-subtitle">Access your Ticksy account</p>
+    </div>
+
+    <div class="form-container">
+        <form class="auth-form">
+            <label>Email</label>
+            <input type="email" id="loginEmail" required>
+
+            <label>Password</label>
+            <input type="password" id="loginPassword" required>
+
+            <button type="button" class="btn btn-primary" onclick="login()">Sign In</button>
+        </form>
+    </div>
+</section>
+    <!-- SIGN UP Section -->
+<section id="sign up" class="section">
+    <div class="section-header">
+        <h2 class="section-title">Create Account</h2>
+        <p class="section-subtitle">Join Ticksy for premium event access</p>
+    </div>
+
+    <div class="form-container">
+        <form class="auth-form">
+            <label>Full Name</label>
+            <input type="text" id="regName" required>
+
+            <label>Email</label>
+            <input type="email" id="regEmail" required>
+
+            <label>Password</label>
+            <input type="password" id="regPassword" required>
+
+            <button type="button" class="btn btn-primary" onclick="register()">Sign Up</button>
+        </form>
+    </div>
+</section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-grid">
+            <div class="footer-column">
+                <p style="color: var(--gray); margin-bottom: 1.5rem; line-height: 1.6; font-size: 0.95rem;">
+                    Platform premium untuk tiket konser dengan pengalaman pemesanan yang mudah dan pembayaran yang aman.
+                </p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-facebook"></i></a>
+                    <a href="#"><i class="fab fa-tiktok"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>Navigation</h3>
+                <ul class="footer-links">
+                    <li><a href="#" onclick="showSection('home')">Beranda</a></li>
+                    <li><a href="#" onclick="showSection('events')">Semua Events</a></li>
+                    <li><a href="#" onclick="showSection('support')">Layanan Pelanggan</a></li>
+                    <li><a href="#" onclick="showSection('sign up')">Sign Up</a></li>
+                    <li><a href="#" onclick="showSection('sign in')">Sign In</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Account</h3>
+                <ul class="footer-links">
+                    <li><a href="#">My Account</a></li>
+                    <li><a href="#">My Tickets</a></li>
+                    <li><a href="#">Order History</a></li>
+                    <li><a href="#">Account Settings</a></li>
+                    <li><a href="#">Help Center</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Download App</h3>
+                <p style="color: var(--gray); margin-bottom: 1rem; font-size: 0.95rem;">
+                    Get the Ticksy app for the best concert experience on the go.
+                </p>
+                <div class="app-buttons">
+                    <a href="#" class="app-btn">
+                        <i class="fab fa-apple"></i>
+                        <div>
+                            <div style="font-size: 0.75rem; color: var(--gray);">Download on the</div>
+                            <div style="font-weight: 600;">App Store</div>
+                        </div>
+                    </a>
+                    <a href="#" class="app-btn">
+                        <i class="fab fa-google-play"></i>
+                        <div>
+                            <div style="font-size: 0.75rem; color: var(--gray);">GET IT ON</div>
+                            <div style="font-weight: 600;">Google Play</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            &copy; 2025 Ticksy. All rights reserved. This is a demo website for educational purposes.
+        </div>
+    </footer>
+
+    <script>
+        /* ===== JAVASCRIPT SECTION ===== */
+
+        let eventData, artistData, venueData;
+
+        // Load JSON data
+        async function loadData() {
+            try {
+                const response = await fetch('data.json');
+                const data = await response.json();
+                eventData = data.eventData;
+                artistData = data.artistData;
+                venueData = data.venueData;
+            } catch (error) {
+                console.error('Error loading data:', error);
+            }
+        }
+
+        // Navigation Functions
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.section').forEach(section => {
+                section.classList.remove('active');
+            });
+            
+            // Show the selected section
+            document.getElementById(sectionId).classList.add('active');
+            
+            // Update navigation active state
+            document.querySelectorAll('.nav-links a').forEach(link => {
+                link.classList.remove('active');
+            });
+            
+            // Find the clicked link and add active class
+            const clickedLink = Array.from(document.querySelectorAll('.nav-links a')).find(link => {
+                return link.onclick.toString().includes(`showSection('${sectionId}')`);
+            });
+            
+            if (clickedLink) {
+                clickedLink.classList.add('active');
+            } else if (sectionId === 'home') {
+                // Handle home section specifically
+                document.querySelector('.nav-links a').classList.add('active');
+            }
+        }
+
+        // Load Events
+        function loadEvents(query = '') {
+            const eventsGrid = document.getElementById('eventsGrid');
+            eventsGrid.innerHTML = '';
+
+            const filteredEvents = eventData.filter(event => {
+                const lowerQuery = query.toLowerCase();
+                return event.title.toLowerCase().includes(lowerQuery) ||
+                       event.artist.toLowerCase().includes(lowerQuery);
+            });
+
+            filteredEvents.forEach(event => {
+                const eventCard = document.createElement('div');
+                eventCard.className = 'event-card';
+                eventCard.innerHTML = `
+                    <div class="event-image">
+                        <img src="${event.image}" alt="${event.title}">
+                        <div class="event-badge">${event.badge}</div>
+                        <div class="event-date">
+                            <i class="far fa-calendar"></i>
+                            ${event.date}
+                        </div>
+                    </div>
+                    <div class="event-content">
+                        <h3 class="event-title">${event.title}</h3>
+                        <p class="event-artist">${event.artist}</p>
+                        <p class="event-venue">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${event.venue}
+                        </p>
+                        <div class="event-pricing">
+                            <div>
+                                <span class="price-from">From</span>
+                                <span class="price-range">${event.price}</span>
+                            </div>
+                             <button class="btn btn-primary" onclick="showSection('beli sekarang')">
+                                <i class="fas fa-ticket-alt"></i>
+                                Beli Sekarang
+                        </div>
+                    </div>
+                `;
+                eventsGrid.appendChild(eventCard);
+            });
+        }
+
+        // Load Artists
+        function loadArtists() {
+            const artistsGrid = document.getElementById('artistsGrid');
+            artistsGrid.innerHTML = '';
+            
+            artistData.forEach(artist => {
+                const artistCard = document.createElement('div');
+                artistCard.className = 'artist-card';
+                artistCard.innerHTML = `
+                    <div class="artist-image">
+                        <img src="${artist.image}" alt="${artist.name}">
+                        <div class="artist-badge">${artist.badge}</div>
+                        <div class="artist-genre">
+                            <i class="fas fa-music"></i>
+                            ${artist.genre}
+                        </div>
+                    </div>
+                    <div class="artist-content">
+                        <h3 class="artist-name">${artist.name}</h3>
+                        <p class="artist-popularity">${artist.popularity}</p>
+                        <p class="artist-origin">
+                            <i class="fas fa-globe"></i>
+                            ${artist.origin}
+                        </p>
+                        <p class="artist-bio">${artist.bio}</p>
+                        <button class="btn-details">View Profile</button>
+                    </div>
+                `;
+                artistsGrid.appendChild(artistCard);
+            });
+        }
+
+        // Load Venues
+        function loadVenues() {
+            const venuesGrid = document.getElementById('venuesGrid');
+            venuesGrid.innerHTML = '';
+            
+            venueData.forEach(venue => {
+                const venueCard = document.createElement('div');
+                venueCard.className = 'venue-card';
+                venueCard.innerHTML = `
+                    <div class="venue-image">
+                        <img src="${venue.image}" alt="${venue.name}">
+                        <div class="venue-badge">${venue.badge}</div>
+                        <div class="venue-location">
+                            <i class="fas fa-map-marker-alt"></i>
+                            ${venue.location}
+                        </div>
+                    </div>
+                    <div class="venue-content">
+                        <h3 class="venue-name">${venue.name}</h3>
+                        <p class="venue-capacity">${venue.capacity}</p>
+                        <p class="venue-address">
+                            <i class="fas fa-building"></i>
+                            ${venue.address}
+                        </p>
+                        <p class="venue-description">${venue.description}</p>
+                        <button class="btn-details">Lihat Lokasi</button>
+                    </div>
+                `;
+                venuesGrid.appendChild(venueCard);
+            });
+        }
+
+        // Initialize the page
+        document.addEventListener('DOMContentLoaded', async function() {
+            await loadData();
+            loadEvents();
+            loadArtists();
+            loadVenues();
+
+            // Add event listeners to buttons
+            document.querySelectorAll('.btn-details').forEach(button => {
+                button.addEventListener('click', function() {
+                    alert('Feature coming soon! This would open detailed view in a real application.');
+                });
+            });
+        });
+
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            if (window.scrollY > 50) {
+                header.style.background = 'rgba(15, 15, 15, 0.98)';
+            } else {
+                header.style.background = 'rgba(15, 15, 15, 0.95)';
+            }
+        });
+
+        // Button hover effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const buttons = document.querySelectorAll('.btn, .btn-details');
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translateY(-2px)';
+                });
+                button.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translateY(0)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
